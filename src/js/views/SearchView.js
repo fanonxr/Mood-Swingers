@@ -24,7 +24,7 @@ export const renderBeer = (beer) => {
                 <p>${beer.tagline}</p>
             </div>
         </div>
-        
+
     </li>
     `
 
@@ -60,7 +60,7 @@ const renderButtons = (page, numResults, resultsPerPage) => {
     let button;
 
     if (page === 1 && pages > 1) {
-        // display the next button 
+        // display the next button
         button = createButton(page, 'next');
     } else if (page < pages) {
         // display the next and previous buttons
@@ -77,7 +77,7 @@ const renderButtons = (page, numResults, resultsPerPage) => {
     // DOMelement.searchResultGifPages.insertAdjacentHTML('afterbegin', button);
 }
 
-export const renderGifResults = (gifs, page = 1, resultsPerPage = 10) => {
+export const renderGifResults = (gifs, page = 1, resultsPerPage = 35) => {
     // render results of the current page
     const start = (page - 1) * resultsPerPage;
     const end = page * resultsPerPage;
@@ -88,6 +88,10 @@ export const renderGifResults = (gifs, page = 1, resultsPerPage = 10) => {
     renderButtons(page, gifs.length, resultsPerPage);
 }
 
-export const renderBeerResults = (beers) => {
-    beers.forEach(renderBeer);
+export const renderBeerResults = (beers, page = 1, resultsPerPage = 20) => {
+    const start = (page - 1) * resultsPerPage;
+    const end = page * resultsPerPage;
+
+    // limiting the amount of gifs that will get displayed.
+    beers.slice(start, end).forEach(renderBeer);
 };
