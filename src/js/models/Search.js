@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { apiKey } from '../config';
 
 // creating a class Search where the term that is searched
 // will be an object that matches the query
@@ -10,7 +11,6 @@ class Search {
 
     // methods to make the ajax request
     async getGiphyResults(query) {
-        const apiKey = 'buItX5pvA2UUe7fWmaiux6TUXeC2mrQX';
 
         try {
             // axios automatically returns a promise object that is JSON already

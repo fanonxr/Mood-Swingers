@@ -18,7 +18,9 @@ export const renderBeer = (beer) => {
     const beerMarkup = `
     <li>
         <div class="beer-result-item">
-            <img src="${beer.image_url}" alt="${beer.name}">
+            <a class="beer-link" href="#${beer.id}">
+                <img src="${beer.image_url}" alt="${beer.name}">
+            </a>
             <div class="beer-text">
                 <h3>${beer.name}</h3>
                 <p>${beer.tagline}</p>
@@ -36,7 +38,9 @@ export const renderGif = (gif) => {
     const gifMarkup = `
     <li>
         <div class="gif-result-item">
-            <img src="${gif.images.fixed_height.url}">
+            <a class="gif-link" href="#${gif.id}">
+                <img src="${gif.images.fixed_height.url}">
+            </a>
         </div>
     </li>
     `
@@ -92,6 +96,6 @@ export const renderBeerResults = (beers, page = 1, resultsPerPage = 20) => {
     const start = (page - 1) * resultsPerPage;
     const end = page * resultsPerPage;
 
-    // limiting the amount of gifs that will get displayed.
+    // limiting the amount of beers that will get displayed.
     beers.slice(start, end).forEach(renderBeer);
 };
